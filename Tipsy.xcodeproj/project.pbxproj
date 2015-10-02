@@ -13,6 +13,7 @@
 		F66DA9CF1BBE49800033C027 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66DA9CD1BBE49800033C027 /* Main.storyboard */; };
 		F66DA9D11BBE49800033C027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F66DA9D01BBE49800033C027 /* Assets.xcassets */; };
 		F66DA9D41BBE49800033C027 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66DA9D21BBE49800033C027 /* LaunchScreen.storyboard */; };
+		F66DA9DD1BBEDD560033C027 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66DA9DC1BBEDD560033C027 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		F66DA9D01BBE49800033C027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F66DA9D31BBE49800033C027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F66DA9D51BBE49800033C027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F66DA9DB1BBEDD560033C027 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		F66DA9DC1BBEDD560033C027 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				F66DA9D21BBE49800033C027 /* LaunchScreen.storyboard */,
 				F66DA9D51BBE49800033C027 /* Info.plist */,
 				F66DA9C41BBE49800033C027 /* Supporting Files */,
+				F66DA9DB1BBEDD560033C027 /* SettingsViewController.h */,
+				F66DA9DC1BBEDD560033C027 /* SettingsViewController.m */,
 			);
 			path = Tipsy;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				F66DA9CC1BBE49800033C027 /* TipViewController.m in Sources */,
 				F66DA9C91BBE49800033C027 /* AppDelegate.m in Sources */,
 				F66DA9C61BBE49800033C027 /* main.m in Sources */,
+				F66DA9DD1BBEDD560033C027 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
