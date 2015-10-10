@@ -129,9 +129,11 @@
         }
         
         textField.text = [self getCurrencyFormattedTextFromDouble:myDoubleNumber];
+        [self calculateTip];
         return NO;
     } else {
         textField.text = [self getCurrencyFormattedTextFromDouble:0.0];
+        [self calculateTip];
         
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Max Bill Amount"
                                                        message: @"Woah! Dude you got some huge bill!"
