@@ -16,14 +16,15 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [ ] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [x] Using locale-specific currency and currency thousands separators.
+* [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 * [x] User can customize the pre-populated tip percentages.
 * [x] User can customize the percentage that's selected by default on a fresh launch of the app.
 * [x] Upper limit to the bill amount. Max amount $ 9,999,999,999.99
+* [x] Calculate tip as user types.
 
 ## Video Walkthrough 
 

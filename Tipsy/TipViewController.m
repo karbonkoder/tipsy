@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.billTextField becomeFirstResponder];
     self.billTextField.delegate = self;
     [self readNSUserDefaults];
     [self calculateTip];
