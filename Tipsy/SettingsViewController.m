@@ -35,15 +35,6 @@
     self.tipSegment.selectedSegmentIndex = defaultSegmentIndex;
 }
 
-// Remember what was default selected
-
-// load with default values
-// save to default values
-
-// store keys to constant file.
-
-// load values in main screen
-// on going back update values
 -(void)updateTipSegment {
     [self.tipSegment setTitle:[NSString stringWithFormat:@"%@%%", self.smallText.text] forSegmentAtIndex:0];
     [self.tipSegment setTitle:[NSString stringWithFormat:@"%@%%", self.mediumText.text] forSegmentAtIndex:1];

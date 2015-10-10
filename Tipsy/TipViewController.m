@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.billTextField.delegate = self;
     [self readNSUserDefaults];
     [self calculateTip];
 }
@@ -80,14 +81,67 @@
 }
 
 -(void)calculateTip {
-    float billAmountValue = [self.billTextField.text floatValue];
+    double billAmountValue = [self getCentValueAsDouble:self.billTextField.text];
     
-    float tipAmountValue = billAmountValue * [self.tipArray[self.tipPercent.selectedSegmentIndex] floatValue] / 100.0;
+    double tipAmountValue = billAmountValue * [self.tipArray[self.tipPercent.selectedSegmentIndex] doubleValue] / 100.0f;
     
-    float totalAmountValue = billAmountValue + tipAmountValue;
+    double totalAmountValue = billAmountValue + tipAmountValue;
     
-    self.tipAmount.text = [NSString stringWithFormat:@"$%0.2f", tipAmountValue];
+    self.tipAmount.text = [self getCurrencyFormattedTextFromDouble:tipAmountValue];
+
+    self.totalAmount.text = [self getCurrencyFormattedTextFromDouble:totalAmountValue];
+}
+
+-(NSString *)getCleanCentString:(NSString *)text {
+    return [[text componentsSeparatedByCharactersInSet: [[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+}
+
+-(NSInteger) getCentValue:(NSString *)text {
+    return [[self getCleanCentString:text] intValue];
+}
+
+-(double) getCentValueAsDouble:(NSString *)text {
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    NSNumber *myNumber = [f numberFromString:[self getCleanCentString:text]];
+    return [myNumber doubleValue];
+}
+
+-(NSString *) getCurrencyFormattedTextFromDouble:(double)myDoubleNumber {
+    NSNumber *formatedValue = [[NSNumber alloc] initWithDouble:myDoubleNumber/ 100.0f];
+    NSNumberFormatter *_currencyFormatter = [[NSNumberFormatter alloc] init];
+    [_currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    return [_currencyFormatter stringFromNumber:formatedValue];
+}
+
+// Inspired from http://stackoverflow.com/a/24342726/566878
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSInteger centValue = [self getCentValue:textField.text];
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    double myDoubleNumber = [self getCentValueAsDouble:textField.text];
     
-    self.totalAmount.text = [NSString stringWithFormat:@"$%0.2f", totalAmountValue];
+    if([textField.text length] < 16){
+        if (string.length > 0) {
+            centValue = centValue * 10 + [string intValue];
+            myDoubleNumber = myDoubleNumber * 10 +  [[f numberFromString:string] doubleValue];
+        } else {
+            centValue = centValue / 10;
+            myDoubleNumber = myDoubleNumber/10;
+        }
+        
+        textField.text = [self getCurrencyFormattedTextFromDouble:myDoubleNumber];
+        return NO;
+    } else {
+        textField.text = [self getCurrencyFormattedTextFromDouble:0.0];
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Max Bill Amount"
+                                                       message: @"Woah! Dude you got some huge bill!"
+                                                      delegate: self
+                                             cancelButtonTitle:@"Cancel"
+                                             otherButtonTitles:@"OK",nil];
+        
+        [alert show];
+        return NO;
+    }
+    return YES;
 }
 @end

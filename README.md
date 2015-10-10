@@ -4,7 +4,7 @@
 
 Submitted by: **Ankush Raina**
 
-Time spent: **12** hours spent in total
+Time spent: **16** hours spent in total
 
 ## User Stories
 
@@ -21,7 +21,9 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [x] User can customize the pre-populated tip percentages.
+* [x] User can customize the percentage that's selected by default on a fresh launch of the app.
+* [x] Upper limit to the bill amount. Max amount $ 9,999,999,999.99
 
 ## Video Walkthrough 
 
