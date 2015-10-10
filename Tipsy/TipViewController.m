@@ -52,6 +52,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     NSLog(@"view will disappear");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setDouble:[self getCentValueAsDouble:self.billTextField.text] forKey:@"lastBillValue"];
+    [defaults synchronize];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -60,17 +63,18 @@
 
 -(void) readNSUserDefaults {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    self.billTextField.text = [self getCurrencyFormattedTextFromDouble:[defaults doubleForKey:@"lastBillValue"]];
+    
     self.tipArray[0] = [NSNumber numberWithFloat:[defaults floatForKey:@"small"]];
     self.tipArray[1] = [NSNumber numberWithFloat:[defaults floatForKey:@"medium"]];
     self.tipArray[2] = [NSNumber numberWithFloat:[defaults floatForKey:@"large"]];
     
-    long defaultSegmentIndex = [defaults integerForKey:@"defaultSegmentIndex"];
-    
     [self.tipPercent setTitle:[NSString stringWithFormat:@"%@%%", self.tipArray[0]] forSegmentAtIndex:0];
     [self.tipPercent setTitle:[NSString stringWithFormat:@"%@%%", self.tipArray[1]] forSegmentAtIndex:1];
     [self.tipPercent setTitle:[NSString stringWithFormat:@"%@%%", self.tipArray[2]] forSegmentAtIndex:2];
-    
-    self.tipPercent.selectedSegmentIndex = defaultSegmentIndex;
+
+    self.tipPercent.selectedSegmentIndex = [defaults integerForKey:@"defaultSegmentIndex"];
 }
 
 - (IBAction)tapPressed:(id)sender {
